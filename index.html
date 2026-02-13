@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Madamji 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff4d94;
+            --soft-pink: #ffb3d9;
+            --deep-red: #d81b60;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            color: var(--deep-red);
+            background: #fff5f7;
+        }
+
+        /* Animated Liquid Background */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe0e9 100%);
+        }
+
+        .liquid-bg::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, #ff80ab 0%, transparent 40%),
+                radial-gradient(circle at 70% 20%, #ff4081 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, #f06292 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #ec407a 0%, transparent 40%);
+            filter: blur(80px);
+            animation: move-bg 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes move-bg {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(10deg) scale(1.1);
+            }
+        }
+
+        .main-screen {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 2000px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .main-screen.fade-out {
+            opacity: 0;
+            transform: scale(0.9) translateY(-30px);
+            filter: blur(10px);
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            padding: 5rem 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            transform-style: preserve-3d;
+            animation: card-in 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes card-in {
+            from {
+                transform: translateY(50px) opacity(0);
+            }
+
+            to {
+                transform: translateY(0) opacity(1);
+            }
+        }
+
+        .name-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
+            color: var(--deep-red);
+        }
+
+        .heart-float {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .buttons-area {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            min-height: 150px;
+        }
+
+        .btn {
+            padding: 1.2rem 3.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff4d88 0%, #ff80ab 100%);
+            color: white;
+            z-index: 100;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 77, 136, 0.4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #a1a1aa 0%, #71717a 100%);
+            color: white;
+            position: absolute;
+            z-index: 50;
+        }
+
+        /* Success Experience */
+        .success-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            z-index: 2000;
+            overflow: hidden;
+        }
+
+        .success-screen.show {
+            display: flex;
+            animation: overlay-fade 1s ease forwards;
+        }
+
+        @keyframes overlay-fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .success-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 500px;
+            padding: 2rem;
+        }
+
+        .success-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+            opacity: 0;
+        }
+
+        .madamji-img {
+            width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            margin: 2rem 0;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .final-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--deep-red);
+            opacity: 0;
+        }
+
+        .animate-pop-up {
+            animation: pop-up 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .animate-zoom-in {
+            animation: zoom-in 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+        }
+
+        .animate-fade-in {
+            animation: overlay-fade 1s ease 0.8s forwards;
+        }
+
+        @keyframes pop-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoom-in {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .hint-text {
+            position: fixed;
+            background: white;
+            color: var(--deep-red);
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+            z-index: 1000;
+            animation: hint-float 1s ease-out forwards;
+        }
+
+        @keyframes hint-float {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .name-title {
+                font-size: 3rem;
+            }
+
+            .success-title {
+                font-size: 3rem;
+            }
+
+            .madamji-img {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="liquid-bg"></div>
+
+    <div class="main-screen" id="mainScreen">
+        <div class="glass-card">
+            <span class="name-title">Madamji 💖</span>
+            <h1>Will You Be My Valentine?</h1>
+
+            <div class="buttons-area" id="btnArea">
+                <button class="btn btn-yes" id="yesBtn">YES! 💘</button>
+                <button class="btn btn-no" id="noBtn">NO ❌</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-screen" id="successScreen">
+        <canvas id="petalCanvas"></canvas>
+        <div class="success-content">
+            <h2 class="success-title" id="sTitle">Yayyy Madamji! 💖</h2>
+            <img src="madamji.jpeg" alt="Celebration" class="madamji-img" id="sImg">
+            <p class="final-text" id="sText">Ahemm Thanku for being my Valentine 🌹</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainScreen = document.getElementById('mainScreen');
+        const successScreen = document.getElementById('successScreen');
+        const canvas = document.getElementById('petalCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const replies = ["Aree... sach me? 😔", "Soch lo... 🥺", "Ek baar aur? 😉", "Galti se? 🤭", "Mauka hai! ✨"];
+        let yesScale = 1;
+
+        // Init NO position
+        setTimeout(() => {
+            const r = noBtn.getBoundingClientRect();
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = r.left + 'px';
+            noBtn.style.top = r.top + 'px';
+        }, 100);
+
+        function moveNo() {
+            const pad = 60;
+            const x = Math.max(pad, Math.random() * (window.innerWidth - noBtn.offsetWidth - pad));
+            const y = Math.max(pad, Math.random() * (window.innerHeight - noBtn.offsetHeight - pad));
+
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // Show hint
+            const hint = document.createElement('div');
+            hint.className = 'hint-text';
+            hint.textContent = replies[Math.floor(Math.random() * replies.length)];
+            hint.style.left = x + 'px';
+            hint.style.top = (y - 40) + 'px';
+            document.body.appendChild(hint);
+            setTimeout(() => hint.remove(), 1000);
+
+            // Grow YES
+            if (yesScale < 2.5) {
+                yesScale += 0.2;
+                yesBtn.style.transform = `scale(${yesScale})`;
+            }
+        }
+
+        // Proximity detection
+        document.addEventListener('mousemove', (e) => {
+            const rect = noBtn.getBoundingClientRect();
+            const bx = rect.left + rect.width / 2;
+            const by = rect.top + rect.height / 2;
+            const d = Math.sqrt(Math.pow(e.clientX - bx, 2) + Math.pow(e.clientY - by, 2));
+            if (d < 130) moveNo();
+
+            // Magnetic YES
+            const yRect = yesBtn.getBoundingClientRect();
+            const yx = yRect.left + yRect.width / 2;
+            const yy = yRect.top + yRect.height / 2;
+            const yd = Math.sqrt(Math.pow(e.clientX - yx, 2) + Math.pow(e.clientY - yy, 2));
+            if (yd < 300) {
+                const angle = Math.atan2(e.clientY - yy, e.clientX - yx);
+                const m = (300 - yd) / 15;
+                yesBtn.style.transform = `scale(${yesScale}) translate(${Math.cos(angle) * m}px, ${Math.sin(angle) * m}px)`;
+            } else {
+                yesBtn.style.transform = `scale(${yesScale})`;
+            }
+        });
+
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNo();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            mainScreen.classList.add('fade-out');
+            setTimeout(() => {
+                mainScreen.style.display = 'none';
+                successScreen.classList.add('show');
+                document.getElementById('sTitle').classList.add('animate-pop-up');
+                document.getElementById('sImg').classList.add('animate-zoom-in');
+                document.getElementById('sText').classList.add('animate-fade-in');
+                startPetals();
+            }, 800);
+        });
+
+        // Petal Particle System
+        let petals = [];
+        function startPetals() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            for (let i = 0; i < 100; i++) petals.push(new Petal());
+            animate();
+        }
+
+        class Petal {
+            constructor() { this.init(); }
+            init() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.sz = Math.random() * 12 + 8;
+                this.speed = Math.random() * 3 + 2;
+                this.rot = Math.random() * 360;
+                this.c = `hsla(${Math.random() * 20 + 330}, 100%, 75%, 0.8)`;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rot * Math.PI / 180);
+                ctx.fillStyle = this.c;
+                ctx.beginPath();
+                ctx.ellipse(0, 0, this.sz / 2, this.sz, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            update() {
+                this.y += this.speed;
+                this.rot += 1;
+                if (this.y > canvas.height) this.init();
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            petals.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+
+</html>
